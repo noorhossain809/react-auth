@@ -16,7 +16,7 @@ const Rider = (props) => {
        <Card border="primary" style={{ width: '18rem' }}>
   <Card.Img onClick={handleClick} className="img" variant="top" src={image} />
     <Card.Body>
-    <Card.Title className="title" onClick={() => handleClick(name)}>{name}</Card.Title>
+    <Card.Title className="title" onClick={() =>handleClick(name)}>{name}</Card.Title>
     </Card.Body>
   </Card>
        

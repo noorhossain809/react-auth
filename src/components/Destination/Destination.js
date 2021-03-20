@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
-import './Destinatione.css'
+import { useParams } from 'react-router';
+import './Destinatione.css';
+import dataRider from '../../data/data.json';
+
+
 
 const Destination = () => {
+
+  const {name} = useParams();
+const [pick, setPick] = useState({});
+const showRides = () => {
+  const availableRiders = dataRider.find(ride => ride.name ===name);
+  setPick(availableRiders);
+  console.log(pick)
+  
+}
+  
     return (
-        <div>
-            <div class="row">
+        <div className="main-header">
+      <div class="row">
                 <div className="search">
                 <h1>Destination</h1>
                 <h5 style={{float: 'left'}}>Pick From</h5>
             <InputGroup className="mb-3">
-            
-    <FormControl
+            <FormControl
       aria-label=""
       aria-describedby="inputGroup-sizing-default"
     />
@@ -19,19 +32,27 @@ const Destination = () => {
   <h5 style={{float: 'left'}}>Pick To</h5>
   <br/>
   <InputGroup className="mb-3">
-    
     <FormControl
       aria-label="Default"
       aria-describedby="inputGroup-sizing-default"
     />
   </InputGroup>
   <br/>
-  <Button variant="danger" size="lg" block>Search</Button>
+
+  <Button onClick={showRides} variant="danger" size="lg" block>Search</Button>
                 </div>
             </div>
-            
+            <div class="row">
+            <div class="col-md-3">
+            <img className="img" src={pick.image} alt=""/>
+          <p>{pick.name}</p>
+          <img className="img" src={pick.image} alt=""/>
+          <p>{pick.name}</p>
+            </div>
+            </div>
         </div>
     );
 };
 
 export default Destination;
+
