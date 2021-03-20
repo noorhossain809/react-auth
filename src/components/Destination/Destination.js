@@ -6,9 +6,9 @@ import dataRider from '../../data/data.json';
 
 
 
-const Destination = () => {
 
-  const {name} = useParams();
+const Destination = () => {
+const {name} = useParams();
 const [pick, setPick] = useState({});
 const showRides = () => {
   const availableRiders = dataRider.find(ride => ride.name ===name);
@@ -16,12 +16,15 @@ const showRides = () => {
   console.log(pick)
   
 }
-  
-    return (
+  return (
         <div className="main-header">
+          <div>
+            
+          </div>
       <div class="row">
                 <div className="search">
                 <h1>Destination</h1>
+                
                 <h5 style={{float: 'left'}}>Pick From</h5>
             <InputGroup className="mb-3">
             <FormControl

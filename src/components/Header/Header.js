@@ -23,9 +23,9 @@ const Header = () => {
     <Link to="/Contact" style={{marginLeft:'40px'}}>Contact</Link>
     </Nav.Item>
     <Nav.Item>
-      <Link to="/login" style={{backgroundColor:'white', marginLeft:'30px'}} eventKey="link-4">Login</Link>
+      <Link to="/login" style={{backgroundColor:'red', color:'white', marginLeft:'30px'}} eventKey="link-4">Login</Link>
     </Nav.Item>
-    <p style={{marginLeft:'10px'}}>{loggedInUser.displayName}</p>
+    <p style={{marginLeft:'10px', color: 'white', fontWeight:'600', backgroundColor:'blue'}}>{loggedInUser.displayName}</p>
   </Nav>
         </div>
     );

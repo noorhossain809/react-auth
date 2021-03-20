@@ -39,8 +39,7 @@ const Login = () => {
     setLoggedInUser(signInUser);
     history.replace(from);
     
-    
-  }).catch((error) => {
+    }).catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
     var email = error.email;
@@ -49,10 +48,10 @@ const Login = () => {
   });
     }
 
-    const handleFacebookSignIn = () => {
-        var fbProvider = new firebase.auth.FacebookAuthProvider();
+  const handleFacebookSignIn = () => {
+    var fbProvider = new firebase.auth.FacebookAuthProvider();
 
-        firebase
+  firebase
   .auth()
   .signInWithPopup(fbProvider)
   .then((result) => {
@@ -60,45 +59,30 @@ const Login = () => {
     const signInUser = {displayName}
     setLoggedInUser(signInUser);
     history.replace(from);
-    
-
-    // ...
   })
   .catch((error) => {
-    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // The email of the user's account used.
     var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
-
-    // ...
   });
 
     }
       
-     const handleGithubSignIn = () => {
-        var ghProvider = new firebase.auth.GithubAuthProvider();
+  const handleGithubSignIn = () => {
+      const ghProvider = new firebase.auth.GithubAuthProvider();
 
-        firebase
+  firebase
   .auth()
   .signInWithPopup(ghProvider)
   .then((result) => {
     const user = result.user;
-    console.log(user)
-    // const signInUser = {displayName}
-    // setLoggedInUser(signInUser);
-    // history.replace(from);
-    // ...
+   
   }).catch((error) => {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  var email = error.email;
+  var credential = error.credential;
     // ...
   });
      }
@@ -127,9 +111,11 @@ const Login = () => {
               firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
               .then( res => {
                 const newUserInfo = {...user};
+                setLoggedInUser(newUserInfo);
                 newUserInfo.error = '';
                 newUserInfo.success = true;
                 setUser(newUserInfo);
+                
                 updateUserName(user.name);
           
               })
@@ -150,6 +136,7 @@ const Login = () => {
                 newUserInfo.error = '';
                 newUserInfo.success = true;
                 setUser(newUserInfo);
+                history.replace(from);
                 console.log('sign in user info', res.user)
               })
               .catch((error) => {

@@ -26,8 +26,7 @@ function App() {
     <div className="App">
         <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
-       
-      <Header></Header>
+       <Header></Header>
              <Switch>
                <Route path="/home">
                  <Home></Home>
@@ -41,14 +40,8 @@ function App() {
                <Route exact path="/">
                  <Home></Home>
                </Route>
-             
              </Switch>
       </Router>
-      
-      
-       
-    
-      
       </UserContext.Provider>
     </div>
   );
