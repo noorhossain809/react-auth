@@ -3,6 +3,7 @@ import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import './Destinatione.css';
 import dataRider from '../../data/data.json';
+import DateDetails from '../DateDetails/Date';
 
 
 
@@ -18,13 +19,14 @@ const showRides = () => {
 }
   return (
         <div className="main-header">
+          
           <div>
             
           </div>
       <div class="row">
                 <div className="search">
-                <h1>Destination</h1>
-                
+                <h1 style={{color:'red', fontWeight:'400'}}>Destination</h1>
+                <DateDetails></DateDetails>
                 <h5 style={{float: 'left'}}>Pick From</h5>
             <InputGroup className="mb-3">
             <FormControl

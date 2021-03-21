@@ -56,7 +56,7 @@ const Login = () => {
   .signInWithPopup(fbProvider)
   .then((result) => {
     const {displayName} = result.user;
-    const signInUser = {displayName}
+    const signInUser = {displayName};
     setLoggedInUser(signInUser);
     history.replace(from);
   })
@@ -76,7 +76,10 @@ const Login = () => {
   .auth()
   .signInWithPopup(ghProvider)
   .then((result) => {
-    const user = result.user;
+    const {displayName} = result.user;
+    const signInUser = {displayName};
+    setLoggedInUser(signInUser);
+    history.replace(from);
    
   }).catch((error) => {
   var errorCode = error.code;
@@ -111,11 +114,12 @@ const Login = () => {
               firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
               .then( res => {
                 const newUserInfo = {...user};
-                setLoggedInUser(newUserInfo);
+                // setLoggedInUser(newUserInfo);
                 newUserInfo.error = '';
                 newUserInfo.success = true;
                 setUser(newUserInfo);
-                
+                setLoggedInUser(newUserInfo);
+                history.replace(from);
                 updateUserName(user.name);
           
               })
@@ -136,6 +140,7 @@ const Login = () => {
                 newUserInfo.error = '';
                 newUserInfo.success = true;
                 setUser(newUserInfo);
+                setLoggedInUser(newUserInfo);
                 history.replace(from);
                 console.log('sign in user info', res.user)
               })
